@@ -1,0 +1,85 @@
+﻿  FileName.cpp
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(64,15): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(64,15): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(64,15): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(64,15): warning C4244:             T=int
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(64,15): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(65,15): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(65,15): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(65,15): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(65,15): warning C4244:             T=int
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(65,15): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(147,18): warning C4305: '=': truncation from 'int' to 'bool'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(335,28): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(335,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(345,29): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(345,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(348,29): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(348,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(351,28): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(351,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(418,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(426,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(447,19): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,30): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,30): warning C4305:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,30): warning C4305:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,30): warning C4305:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,30): warning C4305:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,25): warning C4305: 'argument': truncation from 'double' to 'T'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,25): warning C4305:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,25): warning C4305:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,25): warning C4305:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(461,25): warning C4305:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,59): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,59): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,59): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,59): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,32): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,32): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,32): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,32): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(463,32): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(492,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(705,26): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(724,61): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(724,61): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(724,61): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(724,61): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(724,61): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(767,47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(767,47): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(767,47): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(767,47): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(767,47): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(769,47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(769,47): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(769,47): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(769,47): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(769,47): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,89): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,89): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,89): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,89): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,89): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,69): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,69): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,69): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,69): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(775,69): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(776,49): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(776,44): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,88): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,88): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,88): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,88): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,88): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,68): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,68): warning C4244:         with
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,68): warning C4244:         [
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,68): warning C4244:             T=float
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(784,68): warning C4244:         ]
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(785,48): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\FileName.cpp(785,43): warning C4305: 'argument': truncation from 'double' to 'float'
+  SPproject787.vcxproj -> C:\Users\Nouran Mahmoud\Desktop\SP Project Google dinasour game\x64\Debug\SPproject787.exe

@@ -1,0 +1,333 @@
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+
+using namespace std;
+using namespace sf;
+
+//menue variables and functions
+bool isPaused = false;
+int game_state = 0; //0: at the start menu / 1: the game is playing
+int selectedOption = 0; // for the menu
+
+// a function for the options of the menu by the keyboard
+void menufun(int& option, Event event) {
+
+	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Up) {
+		option = (option + 2) % 3;
+	}
+	if (event.type == Event::KeyPressed && event.key.code == Keyboard::Down) {
+		option = (option + 1) % 3;
+	}
+}
+
+// hover effect function
+void checkOption (int selectedOption, Text arr[], int x, int y, int z) {
+
+
+	
+	if (selectedOption == 0) {
+		arr[x].setFillColor(Color::Black);
+		arr[y].setFillColor(Color(128, 128, 128));
+		arr[z].setFillColor(Color(128, 128, 128));
+
+	}
+	
+	if (selectedOption == 1) {
+		arr[x].setFillColor(Color(128, 128, 128));
+		arr[y].setFillColor(Color::Black);
+		arr[z].setFillColor(Color(128, 128, 128));
+	}
+
+	if (selectedOption == 2) {
+		arr[x].setFillColor(Color(128, 128, 128));
+		arr[y].setFillColor(Color(128, 128, 128));
+		arr[z].setFillColor(Color::Black);
+	}
+
+}
+
+// a function to check if the mouse is on the box or not
+bool isMouseOver(RenderWindow& window, RectangleShape box[],int x) {
+
+	float mouseX = Mouse::getPosition(window).x;
+	float mouseY = Mouse::getPosition(window).y;
+
+	float bxPosX = box[x].getPosition().x;
+	float bxPosY = box[x].getPosition().y;
+
+	float bxPosXwidth = box[x].getPosition().x + box[x].getLocalBounds().width;
+	float bxPosYheight = box[x].getPosition().y + box[x].getLocalBounds().height;
+
+	if (mouseX < bxPosXwidth && mouseX > bxPosX && mouseY < bxPosYheight && mouseY > bxPosY)
+		return true;
+
+	return false;
+}
+
+bool check = false;
+void menuMouse(RectangleShape box[], int &selectedOption, RenderWindow& window,bool &check) {
+	 
+	for (int i = 0; i < 6; i++) {
+		if (isMouseOver(window, box, i)) {
+			selectedOption = i % 3;
+			check = true;
+			break;
+		}
+		else
+		{
+			check = false;
+		}
+	}
+
+
+}
+
+RectangleShape Dinosaur(Vector2f(20.0f, 40.0f));
+int main()
+{
+
+	//boxes for the menu
+	
+		RectangleShape menuboxes[6];
+
+		for (int i = 0; i < 6; i++) {
+			menuboxes[i].setFillColor(Color::Green);
+
+		}
+		menuboxes[0].setSize(Vector2f{ 400,115 });
+		menuboxes[0].setPosition(295, 245);
+		menuboxes[1].setSize(Vector2f{ 550,115 });
+		menuboxes[1].setPosition(210, 270 + 150);
+		menuboxes[2].setSize(Vector2f{ 300,115 });
+		menuboxes[2].setPosition(315, 290 + 300);
+
+
+
+	//the fonts
+	Font font;
+	if (!font.loadFromFile("font-bold.ttf"))
+	{
+		// Handle font loading error
+		return EXIT_FAILURE;
+	}
+	Text menu[6];
+	for (int i = 0; i < 6; i++) {
+		menu[i].setFont(font);
+		menu[i].setFillColor(Color(128, 128, 128));
+		menu[i].setCharacterSize(130);
+	}
+
+	//start text   
+	menu[0].setPosition(285, 225);
+	menu[0].setString(" Start");
+	//settings text
+	menu[1].setPosition(285, 240 + 150);
+	menu[1].setString("Settings");
+	// quit text
+	menu[2].setPosition(285, 265 + 300);
+	menu[2].setString(" Quit");
+	//resume text
+	menu[3].setPosition(840, 346);
+	menu[3].setString("Resume");
+	//settings text
+	menu[4].setPosition(820, 346 + 150);
+	menu[4].setString("Settings");
+	// quit text
+	menu[5].setPosition(820, 346 + 300);
+	menu[5].setString("   Quit");
+
+
+
+
+	// game title
+	Text titletext("Google Dinosaur", font, 100);
+	titletext.setFillColor(Color::Black);
+	titletext.setPosition(560, 40);
+	//instractions
+	Text paneltext("Google Dinosaur is a simple game where you \n need to avoid obstacles as much as you \n can to keep surviving", font, 25);
+	paneltext.setFillColor(Color::Black);
+	paneltext.setPosition(1300, 300);
+
+	//background for the start menu
+	Texture dinotexture;
+	dinotexture.loadFromFile("dino-back-ground.png");
+	Sprite  dino1;
+	dino1.setTexture(dinotexture);
+	dino1.setScale(1, 1);
+	//dino//
+	Texture Dinotexture;
+	Dinotexture.loadFromFile("dino.png");
+	Sprite Dinosaur;
+	Dinosaur.setTexture(Dinotexture);
+	Dinosaur.setPosition(70, 780);
+	Dinosaur.setScale(0.3, 0.3);
+	//cactus//
+	Texture cactustexture;
+	cactustexture.loadFromFile("cactus1.png");
+	Sprite cactus;
+	cactus.setTexture(cactustexture);
+	cactus.setPosition(550, 805);
+	cactus.setScale(3, 3);
+	//birds//
+	Texture birdstexture;
+	birdstexture.loadFromFile("birds.png");
+	Sprite birds;
+	birds.setTexture(birdstexture);
+	birds.setPosition(850, 510);
+	birds.setScale(1.5, 1.5);
+	birds.setTextureRect(IntRect(94, 0, 188, 80));
+	//panel//
+	Texture paneltexture;
+	paneltexture.loadFromFile("panel.png");
+	Sprite panel;
+	panel.setTexture(paneltexture);
+	panel.setPosition(1180, 90);
+	panel.setScale(0.85, 0.85);
+
+	//sounds
+	SoundBuffer buffer[4];
+	if (!buffer[0].loadFromFile("Start Menu Music.mp3") || !buffer[1].loadFromFile("Game Start Button Click Sound.mp3") || !buffer[2].loadFromFile("Other Buttons Click sound.mp3") || !buffer[3].loadFromFile("Pause Menu Music.mp3"))
+		cerr << "Cannot Open File from path specified!!";
+
+	Sound sound[5];
+	for (int i = 0; i < 4; i++)
+		sound[i].setBuffer(buffer[i]);
+
+	// volume for the background sounds 
+	sound[0].setVolume(50.0f);
+	sound[3].setVolume(50.0f);
+
+	// volume for the buttons sounds 
+	sound[1].setVolume(150.0f);
+	//  sound[4].setVolume(150.0f);//
+	sound[2].setVolume(20.0f);
+
+
+
+	sound[0].play(); //Start Menu Music playing at the back ground
+	sound[0].setLoop(true);
+
+	// Dinosaur.setFillColor(Color::Cyan);//
+	RenderWindow window(VideoMode::getDesktopMode(), "Google Dinosaur!!", Style::Fullscreen);
+
+	while (window.isOpen())
+	{
+		Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.KeyPressed && event.key.code == Keyboard::Escape)
+				window.close();
+
+			if (event.KeyPressed && event.key.code == Keyboard::Escape && game_state == 1) {
+				isPaused = true; //the game will pause 
+			}
+
+
+			//start menue
+			if (game_state == 0)
+			{
+
+				menuMouse(menuboxes, selectedOption, window, check);
+				menufun(selectedOption, event);
+
+				if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter|| check && event.type == Event::MouseButtonPressed)
+				{
+					if (selectedOption == 0) {
+						game_state = 1; // the game started playing
+						sound[0].pause(); // the music for the start menu will stop;
+						sound[1].play(); // music for start button click
+					}
+					//settings
+					if (selectedOption == 1) {
+
+						sound[2].play();
+					}
+					if (selectedOption == 2) {
+						sound[2].play();
+						sound[0].pause(); // the music for the start menu will stop;
+
+						window.close(); //quit
+					}
+				}
+
+			}
+			//pause menu
+			if (isPaused)
+			{
+				menuMouse(menuboxes, selectedOption, window, check);
+				menufun(selectedOption, event);
+				if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter || check && event.type == Event::MouseButtonPressed)
+				{
+					if (selectedOption == 0) {
+						// game_state = 1;  // the game started playing
+						isPaused = false;
+						sound[2].play();
+
+					}
+					if (selectedOption == 1) {
+						sound[2].play();
+					} //settings
+
+					if (selectedOption == 2) {
+						sound[2].play();
+						window.close(); //quit
+					}
+
+				}
+
+			}
+
+		}
+
+		//mouse postion
+	   // Vector2i mousePostion = Mouse::getPosition(window);
+	   // cout << mousePostion.x << "," << mousePostion.y << endl;
+
+
+
+
+
+		window.clear(Color::Black);
+
+		if (game_state == 0) 
+		{
+
+			window.draw(dino1);
+
+			for (int i = 0; i < 6; i++) {
+				window.draw(menuboxes[i]);
+			}
+
+			for (int i = 0; i < 3; i++)
+				window.draw(menu[i]);
+			window.draw(Dinosaur);
+			window.draw(cactus);
+			window.draw(birds);
+			window.draw(panel);
+			window.draw(paneltext);
+			window.draw(titletext);
+
+
+			checkOption(selectedOption, menu, 0, 1, 2);  //hover effect for the start menu
+
+		}
+
+		if (isPaused)
+		{
+
+			for (int i = 3; i < 6; i++)
+				window.draw(menu[i]);
+			window.draw(dino1);
+
+
+			checkOption(selectedOption, menu, 3, 4, 5);  //hover effect for the puse menu
+
+		}
+
+		window.display();
+	} //while loop
+}// main
+
+

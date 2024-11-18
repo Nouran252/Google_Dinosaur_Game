@@ -1,0 +1,286 @@
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
+
+using namespace std;
+using namespace sf;
+
+//menue variables
+bool isPaused = false;
+int game_state = 0; //0: at the start menu / 1: the game is playing
+int selectedOption = 0; // for the start menu
+int selectedOption2 = 0; // for the pause menu
+void menufun(int& x, Event y);
+
+
+
+
+RectangleShape Dinosaur(Vector2f(20.0f, 40.0f));
+int main()
+{
+
+	//the fonts
+	Font font;
+	if (!font.loadFromFile("font-bold.ttf"))
+	{
+		// Handle font loading error
+		return EXIT_FAILURE;
+	}
+	Text menu[6];
+	for (int i = 0; i < 6; i++) {
+		menu[i].setFont(font);
+		menu[i].setFillColor(Color(128, 128, 128));
+		menu[i].setCharacterSize(130);
+	}
+	//start text   
+	menu[0].setPosition(285, 225);
+	menu[0].setString(" Start");
+	//settings text
+	menu[1].setPosition(285, 240 + 150);
+	menu[1].setString("Settings");
+	// quit text
+	menu[2].setPosition(285, 265 + 300);
+	menu[2].setString(" Quit");
+	//resume text
+	menu[3].setPosition(840, 346);
+	menu[3].setString("Resume");
+	//settings text
+	menu[4].setPosition(820, 346 + 150);
+	menu[4].setString("Settings");
+	// quit text
+	menu[5].setPosition(820, 346 + 300);
+	menu[5].setString("   Quit");
+	// game title
+	Text titletext("Google Dinosaur", font, 100);
+	titletext.setFillColor(Color::Black);
+	titletext.setPosition(560, 40);
+	//instractions
+	Text paneltext("Google Dinosaur is a simple game where you \n need to avoid obstacles as much as you \n can to keep surviving", font, 25);
+	paneltext.setFillColor(Color::Black);
+	paneltext.setPosition(1300, 300);
+
+	//background for the start menu
+	Texture dinotexture;
+	dinotexture.loadFromFile("dino-back-ground.png");
+	Sprite  dino1;
+	dino1.setTexture(dinotexture);
+	dino1.setScale(1, 1);
+	//dino//
+	Texture Dinotexture;
+	Dinotexture.loadFromFile("dino.png");
+	Sprite Dinosaur;
+	Dinosaur.setTexture(Dinotexture);
+	Dinosaur.setPosition(70, 780);
+	Dinosaur.setScale(0.3, 0.3);
+	//cactus//
+	Texture cactustexture;
+	cactustexture.loadFromFile("cactus1.png");
+	Sprite cactus;
+	cactus.setTexture(cactustexture);
+	cactus.setPosition(550, 805);
+	cactus.setScale(3, 3);
+	//birds//
+	Texture birdstexture;
+	birdstexture.loadFromFile("birds.png");
+	Sprite birds;
+	birds.setTexture(birdstexture);
+	birds.setPosition(850, 510);
+	birds.setScale(1.5, 1.5);
+	birds.setTextureRect(IntRect(94, 0, 188, 80));
+	//panel//
+	Texture paneltexture;
+	paneltexture.loadFromFile("panel.png");
+	Sprite panel;
+	panel.setTexture(paneltexture);
+	panel.setPosition(1180, 90);
+	panel.setScale(0.85, 0.85);
+
+	//sounds
+	SoundBuffer buffer[4];
+	if (!buffer[0].loadFromFile("Start Menu Music.mp3") || !buffer[1].loadFromFile("Game Start Button Click Sound.mp3") || !buffer[2].loadFromFile("Other Buttons Click sound.mp3") || !buffer[3].loadFromFile("Pause Menu Music.mp3"))
+		cerr << "Cannot Open File from path specified!!";
+
+	Sound sound[5];
+	for (int i = 0; i < 4; i++)
+		sound[i].setBuffer(buffer[i]);
+
+	// volume for the background sounds 
+	sound[0].setVolume(50.0f);
+	sound[3].setVolume(50.0f);
+
+	// volume for the buttons sounds 
+	sound[1].setVolume(150.0f);
+	//  sound[4].setVolume(150.0f);//
+	sound[2].setVolume(20.0f);
+
+
+
+	sound[0].play(); //Start Menu Music playing at the back ground
+	sound[0].setLoop(true);
+
+	// Dinosaur.setFillColor(Color::Cyan);//
+	RenderWindow window(VideoMode::getDesktopMode(), "Google Dinosaur!!", Style::Fullscreen);
+
+	while (window.isOpen())
+	{
+		Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.KeyPressed && event.key.code == Keyboard::Escape)
+				window.close();
+
+			if (event.KeyPressed && event.key.code == Keyboard::Escape && game_state == 1) {
+				isPaused = true; //the game will pause 
+			}
+
+
+			//start menue
+			if (game_state == 0)
+			{
+
+
+				menufun(selectedOption, event);
+
+				if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter)
+				{
+					if (selectedOption == 0) {
+						game_state = 1; // the game started playing
+						sound[0].pause(); // the music for the start menu will stop;
+						sound[1].play(); // music for start button click
+					}
+					//settings
+					if (selectedOption == 1) {
+
+						sound[2].play();
+					}
+					if (selectedOption == 2) {
+						sound[2].play();
+						sound[0].pause(); // the music for the start menu will stop;
+
+						window.close(); //quit
+					}
+				}
+
+			}
+			//pause menu
+			if (isPaused)
+			{
+				menufun(selectedOption2, event);
+				if (event.type == Event::KeyPressed && event.key.code == Keyboard::Enter)
+				{
+					if (selectedOption2 == 0) {
+						// game_state = 1;  // the game started playing
+						isPaused = false;
+						sound[2].play();
+
+					}
+					if (selectedOption2 == 1) {
+						sound[2].play();
+					} //settings
+
+					if (selectedOption2 == 2) {
+						sound[2].play();
+						window.close(); //quit
+					}
+
+				}
+
+			}
+
+		}
+
+		//mouse postion
+	   // Vector2i mousePostion = Mouse::getPosition(window);
+	   // cout << mousePostion.x << "," << mousePostion.y << endl;
+
+
+
+
+
+		window.clear(Color::Black);
+
+		if (game_state == 0) {
+
+			window.draw(dino1);
+			for (int i = 0; i < 3; i++)
+				window.draw(menu[i]);
+			window.draw(Dinosaur);
+			window.draw(cactus);
+			window.draw(birds);
+			window.draw(panel);
+			window.draw(paneltext);
+			window.draw(titletext);
+
+
+
+
+
+
+
+
+
+			//start
+			if (selectedOption == 0) {
+				menu[0].setFillColor(Color::Black);
+				menu[1].setFillColor(Color(128, 128, 128));
+				menu[2].setFillColor(Color(128, 128, 128));
+
+			}
+			//settings
+			if (selectedOption == 1) {
+				menu[0].setFillColor(Color(128, 128, 128));
+				menu[1].setFillColor(Color::Black);
+				menu[2].setFillColor(Color(128, 128, 128));
+			}
+			//quit
+			if (selectedOption == 2) {
+				menu[0].setFillColor(Color(128, 128, 128));
+				menu[1].setFillColor(Color(128, 128, 128));
+				menu[2].setFillColor(Color::Black);
+			}
+		}
+
+		if (isPaused)
+		{
+
+			for (int i = 3; i < 6; i++)
+				window.draw(menu[i]);
+			window.draw(dino1);
+
+
+
+			//resume
+			if (selectedOption2 == 0) {
+				menu[3].setFillColor(Color::Black);
+				menu[4].setFillColor(Color(128, 128, 128));
+				menu[5].setFillColor(Color(128, 128, 128));
+
+			}
+			//settings
+			if (selectedOption2 == 1) {
+				menu[3].setFillColor(Color(128, 128, 128));
+				menu[4].setFillColor(Color::Black);
+				menu[5].setFillColor(Color(128, 128, 128));
+			}
+			//quit
+			if (selectedOption2 == 2) {
+				menu[3].setFillColor(Color(128, 128, 128));
+				menu[4].setFillColor(Color(128, 128, 128));
+				menu[5].setFillColor(Color::Black);
+			}
+		}
+
+		window.display();
+	} //while loop
+}// main
+
+void menufun(int& x, Event y) {
+
+	if (y.type == Event::KeyPressed && y.key.code == Keyboard::Up) {
+		x = (x + 2) % 3;
+	}
+	if (y.type == Event::KeyPressed && y.key.code == Keyboard::Down) {
+		x = (x + 1) % 3;
+	}
+}
